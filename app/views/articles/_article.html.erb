@@ -1,0 +1,26 @@
+<div class="post hentry category-uncategorized tag-release">
+
+  <h2><%= link_to_article article %></h2>
+
+  <p class="date"><%= format_date article.date %> <span class="author">by <%= article.author %></span></p>
+
+  <div class="entry">
+
+    <%= html_transform article.body %>
+
+  </div>
+  
+  <% if @articles %>
+  <div class="postmetadata">
+    <p class="comments"><a href="<%= article_url article %>#respond" title="Comment on <%= article.title %>">Comments &#187;</a></p>
+    <p class="time">Posted @ <%= format_time article.date %></p>
+    <br class="clear" />
+  </div>
+  <% else %>
+    <% if @article.tags.present? %>
+    <p>Tags: 
+      <%= @article.tags.split(',').map { |tag|  link_to(tag, blog_tag_path(tag), :rel => 'tag')}.join(', ') %>
+    <% end %>
+  <% end %>
+
+</div>

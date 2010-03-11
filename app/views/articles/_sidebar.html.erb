@@ -1,0 +1,26 @@
+<div id="subscribe">
+	<h2>Subscribe</h2>
+	<ul>
+		<li><a id="btnRss" href="http://feeds2.feedburner.com/spreehq" title="Subscribe to the Railsdog RSS Feed">Railsdog RSS Feed</a></li>
+	</ul>
+</div>
+
+<div id="recent-posts">
+  <h2>Recent Posts</h2>	
+  <ul>
+    <% for article in Article.recent %>
+  		<li><%= link_to_article article %></li>
+		<% end %>
+	</ul>
+</div>
+
+<div id="archives">
+  <h2>Archives</h2>
+  <ul>
+    <% for archive_month in Article.archive_months %>
+  		<li><%= link_to_archive archive_month %></li>
+		<% end %>
+	</ul>
+</div>
+
+

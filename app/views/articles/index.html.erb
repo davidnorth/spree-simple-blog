@@ -1,0 +1,33 @@
+<% @title = "Blog" %>
+<% @section = 'blog' %>
+
+
+<div id="blog">
+  <% if params[:tag] %>
+  	<h2 class="pagetitle">Posts Tagged &lsquo;<%= params[:tag] %>&rsquo;</h2>
+  <% elsif params[:year] && params[:month] %>
+  	<h2 class="pagetitle">Archive for <%= Date::MONTHNAMES[params[:month].to_i] %>, <%= params[:year].to_i %></h2>
+	<% end %>
+  
+  <%= render :partial => 'article', :collection => @articles %>
+
+  <% if @total_pages %>
+	<div class="navigation">
+    <% if @total_pages > 1 && @current_page < @total_pages %>
+  		<div class="alignleft"><a href="<%= url_for(:overwrite_params => {:page => @current_page + 1}) %>" >&laquo; Older Entries</a></div>
+		<% end %>
+		<% if @current_page > 1 %>
+  		<div class="alignright"><a href="<%= url_for(:overwrite_params => {:page => @current_page - 1}) %>" >Newer Entries &raquo;</a></div>
+		<% end %>
+		<br class="clear" />
+	</div>
+	<% end %>
+	
+</div>
+
+<div id="sidebar">
+
+  <%= render 'sidebar' %>
+
+</div>
+<br class="clear" />
