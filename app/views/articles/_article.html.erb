@@ -1,8 +1,13 @@
-<div class="post hentry category-uncategorized tag-release">
+<div class="post">
 
-  <h2><%= link_to_article article %></h2>
-
-  <p class="date"><%= format_date article.date %> <span class="author">by <%= article.author %></span></p>
+  <div class="heading">
+    <h2><%= link_to_article article %></h2>
+    <p>
+      <span class="author">by <strong><%= article.author %></strong></span>
+      &bull;
+      <span class="date"><%= format_date article.date %></span> 
+    </p>
+  </div>
 
   <div class="entry">
 
@@ -11,7 +16,7 @@
   </div>
   
   <% if @articles %>
-  <div class="postmetadata">
+  <div class="meta">
     <p class="comments"><a href="<%= article_url article %>#respond" title="Comment on <%= article.title %>">Comments &#187;</a></p>
     <p class="time">Posted @ <%= format_time article.date %></p>
     <br class="clear" />

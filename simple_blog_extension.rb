@@ -20,6 +20,7 @@ class SimpleBlogExtension < Spree::Extension
 
     AppConfiguration.class_eval do
       preference :disqus_id, :default => nil
+      preference :blog_feed_url, :default => '/blog.xml'
     end
 
   end

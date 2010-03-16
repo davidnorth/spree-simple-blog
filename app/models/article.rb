@@ -27,7 +27,7 @@ class Article < FileModel
   end
 
   def self.archive_months
-    @@archive_months ||= content_dir.to_a.map{|f| File.basename(f).split('-')[0..1] }.uniq.reverse
+    @@archive_months ||= files.map{|f| File.basename(f).split('-')[0..1] }.uniq
   end
 
   # Store list of articles for each tag in a hash
@@ -44,9 +44,4 @@ class Article < FileModel
     @@tag_index
   end
 
-
-  def date
-    @date ||= Time.parse(meta["date"])
-  end
-   
 end

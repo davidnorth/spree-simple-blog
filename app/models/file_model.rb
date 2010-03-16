@@ -45,33 +45,30 @@ class FileModel
   end
   
   def self.random(options = {})
-    files = content_dir.to_a
     from_file(files[rand(all.size)])
   end
 
-  def self.content_dir
-    Dir["#{content_path}/*.txt"]
+  def self.files
+    Dir["#{content_path}/*.txt"].sort_by {|f| File.basename(f) }.reverse
   end
 
   def index
-    @index ||= Article.content_dir.to_a.index(file)
+    @index ||= Article.files.index(file)
   end
 
   def next
     return @next if @next.present?
-    if next_file = self.class.content_dir.to_a[index + 1]
+    if next_file = self.class.files[index + 1]
       @next = self.class.from_file(next_file)
     end
   end
 
   def previous
     return @previous if @previous.present?
-    if index > 0 and previous_file = self.class.content_dir.to_a[index - 1]
+    if index > 0 and previous_file = self.class.files[index - 1]
       @previous = self.class.from_file(previous_file)
     end
   end
-
-
 
   def self.from_file(file)
     meta, body = File.read(file).split(/\n\n/, 2)
@@ -87,11 +84,11 @@ class FileModel
   private
   
     def self.get_filtered_files(options)
-      files = content_dir.to_a.reverse
       if options[:match]
-        files = files.select{|f| f =~ options[:match]}
+        files.select{|f| f =~ options[:match]}
+      else
+        files
       end
-      files
     end
     
 end
