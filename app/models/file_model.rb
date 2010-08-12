@@ -78,7 +78,7 @@ class FileModel
   end
 
   def self.content_path
-    File.expand_path(File.join(RAILS_ROOT, "content",  self.name.underscore.pluralize))
+    File.expand_path(File.join(Rails.root, "content",  self.name.underscore.pluralize))
   end
   
   private

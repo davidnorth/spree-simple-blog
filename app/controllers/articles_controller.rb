@@ -1,4 +1,4 @@
-class ArticlesController < ApplicationController
+class ArticlesController < Spree::BaseController
   rescue_from  Errno::ENOENT, :with => :render_404
   
   def index

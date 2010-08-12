@@ -1,8 +1,10 @@
-map.with_options({:controller => "articles"}) do |m|
-  m.blog_articles '/blog', :action => 'index'
-  m.blog_articles '/blog.:format', :action => 'index'
-  m.blog_tag '/blog/tag/:tag', :action => 'tag'
-  m.blog_articles_page '/blog/page/:page', :action => 'index'
-  m.blog_articles_archive '/blog/:year/:month', :action => 'archive'
-  m.blog_article '/blog/:year/:month/:day/:permalink', :action => 'show'
+Rails.application.routes.draw do
+
+  match '/blog',                              :to => 'articles#index',   :as => 'blog_articles'
+  match '/blog.:format',                      :to => 'articles#index',   :as => 'blog_articles'
+  match '/blog/tag/:tag',                     :to => 'articles#tag',     :as => 'blog_tag'
+  match '/blog/page/:page',                   :to => 'articles#index',   :as => 'blog_articles_page'
+  match '/blog/:year/:month',                 :to => 'articles#archive', :as => 'blog_articles_archive'
+  match '/blog/:year/:month/:day/:permalink', :to => 'articles#show',    :as => 'blog_article'
+
 end
