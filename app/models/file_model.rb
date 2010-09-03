@@ -53,7 +53,7 @@ class FileModel
   end
 
   def index
-    @index ||= Article.files.index(file)
+    @index ||= self.class.files.index(file)
   end
 
   def next
@@ -78,7 +78,11 @@ class FileModel
   end
 
   def self.content_path
-    File.expand_path(File.join(Rails.root, "content",  self.name.underscore.pluralize))
+    File.expand_path(File.join(Rails.root, "content",  relative_path))
+  end
+
+  def self.relative_path
+    self.name.underscore
   end
   
   private

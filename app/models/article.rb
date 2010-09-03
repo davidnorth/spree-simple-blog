@@ -43,5 +43,11 @@ class Article < FileModel
     end
     @@tag_index
   end
+  
+  %w(title_tag meta_keywords meta_description).each do |attribute|
+    define_method(attribute) do
+      meta[attribute]
+    end
+  end
 
 end

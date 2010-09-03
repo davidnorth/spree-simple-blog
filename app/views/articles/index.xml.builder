@@ -1,9 +1,9 @@
 xml.instruct!
 xml.feed "xmlns" => "http://www.w3.org/2005/Atom" do
-  xml.title "Spree - Open Source E-Commerce for Ruby on Rails"
-  xml.id "http://spreecommerce.com/blog"
+  xml.title Spree::Config[:blog_feed_title]
+  xml.id Spree::Config[:blog_feed_url]
   xml.updated @articles.first.date.xmlschema unless @articles.empty?
-  xml.author { xml.name "Railsdog" }
+  xml.author { xml.name Spree::Config[:blog_feed_author] }
 
   @articles.each do |article|
     xml.entry do
