@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'spree_simple_blog'
-  s.version     = '3.0.2'
+  s.version     = '3.0.4'
   s.summary     = 'Toto style blogging for Spree'
   s.description = 'Toto style blogging for Spree'
   s.required_ruby_version = '>= 1.8.7'
