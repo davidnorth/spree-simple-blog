@@ -1,15 +1,13 @@
+require 'spree_core'
+
 module SimpleBlogExtension
+
   class Engine < Rails::Engine
-    
+
     def self.activate
 
       Spree::BaseController.class_eval do
         helper ArticlesHelper
-      end
-
-      AppConfiguration.class_eval do
-        preference :disqus_id, :default => nil
-        preference :blog_feed_url, :default => '/blog.xml'
       end
 
     end
