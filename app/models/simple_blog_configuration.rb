@@ -1,7 +1,7 @@
 class SimpleBlogConfiguration  < Spree::Preferences::Configuration
 
-  preference :disqus_id, :default => nil
-  preference :blog_feed_url, :default => '/blog.xml'
+  preference :disqus_id, :string, :default => ''
+  preference :blog_feed_url, :string, :default => '/blog.xml'
 
 end
 

@@ -1,4 +1,4 @@
-Rails.application.routes.draw do
+Spree::Core::Engine.routes.append do
 
   match '/blog',                              :to => 'articles#index',   :as => 'blog_articles'
   match '/blog.:format',                      :to => 'articles#index',   :as => 'blog_articles'

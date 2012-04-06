@@ -13,7 +13,7 @@
 
 <%= render 'article', :article => @article %>
 
-<% if Spree::Config[:disqus_id] %>
+<% if SimpleBlogExtension::Config.disqus_id %>
 <div id="comments">
   <a name="respond"></a>
   <div id="disqus_thread"></div>
@@ -31,8 +31,8 @@
   <%= render 'sidebar' %>
 <% end %>
 
-<% if Spree::Config[:disqus_id] %>
+<% if SimpleBlogExtension::Config.disqus_id %>
   <% content_for :extra_javascripts do %>
-    <script type="text/javascript" src="http://disqus.com/forums/<%= Spree::Config[:disqus_id] %>/embed.js"></script>
+    <script type="text/javascript" src="http://disqus.com/forums/<%= SimpleBlogExtension::Config.disqus_id %>/embed.js"></script>
   <% end %>
 <% end %>
