@@ -1,4 +1,4 @@
-Spree::Core::Engine.routes.append do
+Spree::Core::Engine.routes.prepend do
 
   match '/blog',                              :to => 'articles#index',   :as => 'blog_articles'
   match '/blog.:format',                      :to => 'articles#index',   :as => 'blog_articles'
